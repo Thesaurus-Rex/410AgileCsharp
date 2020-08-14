@@ -20,10 +20,10 @@ namespace _410AgileCsharp
 			System.Environment.Exit(0);
 		}
 
-        [Obsolete]
-        static void Main(string[] args)
+		[Obsolete]
+		static void Main(string[] args)
 		{
-			string [] logHistory = new string[101];
+			string[] logHistory = new string[101];
 			FtpHandler mainHandler = new FtpHandler();
 			RemoteLS listRemote = new RemoteLS();
 			RemoteMkDir mkDirRemote = new RemoteMkDir();
@@ -32,16 +32,30 @@ namespace _410AgileCsharp
 			Rename rename = new Rename();
 			Delete delete = new Delete();
 
+			if (!File.Exists("log.txt")) {
+				File.Create("log.txt").Close();
+			}
 
 			string[] lines = System.IO.File.ReadAllLines(@".\log.txt");
 
 			int t;
 
+			if (!File.Exists("number.txt"))
+            {
+				File.Create("number.txt").Close();
+            }
 
-				string[] number = System.IO.File.ReadAllLines(@".\number.txt");
-				Console.WriteLine(number);
+			string[] number = System.IO.File.ReadAllLines(@".\number.txt");
+			Console.WriteLine(number);
+			try
+			{
 				t = Int32.Parse(number[0]);
-			
+			}
+			catch(Exception e)
+            {
+				//only if t is null.
+				t = 0;
+            }
 			
 			int i = 0;
 			foreach (string line in lines)
