@@ -51,7 +51,7 @@ namespace _410AgileCsharp
 			{
 				t = Int32.Parse(number[0]);
 			}
-			catch(Exception e)
+			catch(Exception)
             {
 				//only if t is null.
 				t = 0;
